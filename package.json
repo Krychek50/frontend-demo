@@ -1,0 +1,31 @@
+{
+  "sideEffects": false,
+  "scripts": {
+    "dev": "webpack serve --hot --mode=development --host 0.0.0.0 --port 8080",
+    "clean": "rm -rf ./dist",
+    "build:dev": "webpack --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "dependencies": {
+    "@types/mini-css-extract-plugin": "^2.5.1",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "6",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.4",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-plugin-react": "^7.30.0",
+    "webpack-dev-server": "^4.7.2"
+  }
+}
