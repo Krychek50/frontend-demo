@@ -3,7 +3,7 @@ name: Build + Deploy
 on:
   push:
     branches: 
-    - master
+    - main
 
 jobs:
   build:
@@ -17,12 +17,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
-      
-    - name: Cache Node Modules
-      uses: actions/cache@v2
-      with:
-        path: '**/node_modules'
-        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
     - name: Install
       run: yarn install
@@ -38,4 +32,4 @@ jobs:
         aws-region: eu-west-2
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./dist/ s3://cryowield.com --delete
+      run: aws s3 sync ./dist/ s3://krychek-frontend-demo --delete
