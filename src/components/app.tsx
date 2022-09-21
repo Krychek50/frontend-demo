@@ -13,7 +13,6 @@ export function App() {
     const fetchData = async () => {
       const response = await fetch('https://jsonplaceholder.typicode.com/users');
       const data = await response.json();
-      console.log(data);
       setState({ cardList: data });
     }
 
@@ -22,7 +21,7 @@ export function App() {
  
   return ( 
     <div className={css.app}>
-      {state.cardList.map((card) => <Card card={card}/> )}
+      {state.cardList.map((card) => <Card key={card.id} card={card}/> )}
     </div>
 	);
 }
