@@ -11,7 +11,7 @@ export function App() {
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const response = await fetch('https://api.spacexdata.com/v5/launches/upcoming');
       const data = await response.json();
       setState({ cardList: data });
     }
@@ -21,7 +21,8 @@ export function App() {
  
   return ( 
     <div className={css.app}>
-      {state.cardList.map((card) => <Card key={card.id} card={card}/> )}
+      <h1>Upcoming SpaceX Launches</h1>
+      {state.cardList.map((card) => <Card key={card.flight_number} card={card}/> )}
     </div>
 	);
 }
