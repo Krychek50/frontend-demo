@@ -1,8 +1,9 @@
+import css from '../styles/card.module.css';
+
 export interface ICardData {
-  id: number,
   name: string,
-  username: string,
-  email: string
+  flight_number: string,
+  date_utc: string
 }
 
 interface ICardProps {
@@ -11,10 +12,10 @@ interface ICardProps {
 
 export function Card(props: ICardProps) {
 	return (
-		<div>
-			<div>{props.card.name}</div>
-      <div>{props.card.username}</div>
-      <div>{props.card.email}</div>
+		<div className={css.container}>
+			<div className={css.item}>{props.card.name}</div>
+      <div className={css.item}>{props.card.flight_number}</div>
+      <div className={css.item}>{props.card.date_utc}</div>
 		</div>
 	);
 }
