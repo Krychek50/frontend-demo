@@ -16,7 +16,7 @@ jobs:
 
     - name: Merge Dev
       run: |
-        git config user.name github-cryowield
-        git config user.email cryowield@gmail.com
+        git config user.name github-tom
+        git config user.email tom@gmail.com
         git merge origin/dev
         git push
