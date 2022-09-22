@@ -1,0 +1,22 @@
+name: Merge Dev
+
+on:
+  workflow_dispatch: {}
+  schedule:
+  - cron: '30 10 * * 1'
+
+jobs:
+  test_schedule:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Merge Dev
+      run: |
+        git config user.name github-cryowield
+        git config user.email cryowield@gmail.com
+        git merge origin/dev
+        git push
