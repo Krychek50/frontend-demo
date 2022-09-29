@@ -11,9 +11,9 @@ export function App() {
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://api.spacexdata.com/v5/launches/upcoming');
+      const response = await fetch('https://9faw3kjuxl.execute-api.eu-west-2.amazonaws.com/');
       const data = await response.json();
-      setState({ cardList: data });
+      setState({ cardList: data.Items });
     }
 
     fetchData();
@@ -22,7 +22,7 @@ export function App() {
   return ( 
     <div className={css.app}>
       <h1>Upcoming SpaceX Launches</h1>
-      {state.cardList.map((card) => <Card key={card.flight_number} card={card}/> )}
+      {state.cardList.map((card) => <Card {...card}/> )}
     </div>
 	);
 }

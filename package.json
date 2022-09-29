@@ -1,4 +1,10 @@
 {
+  "name": "frontend-demo",
+  "version": "1.0.0",
+  "repository": "git@github.com:Krychek50/frontend-demo.git",
+  "author": "Tom Nuttall <tsnuttall@gmail.com>",
+  "license": "MIT",
+
   "sideEffects": false,
   "scripts": {
     "dev": "webpack serve --hot --mode=development --host 0.0.0.0 --port 8080",
