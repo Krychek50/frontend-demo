@@ -7,9 +7,9 @@
 
   "sideEffects": false,
   "scripts": {
-    "dev": "webpack serve --hot --mode=development --host 0.0.0.0 --port 8080",
+    "dev": "webpack serve --hot --mode=development --devtool=source-map --host 0.0.0.0 --port 8080",
     "clean": "rm -rf ./dist",
-    "build:dev": "webpack --mode=development",
+    "build:dev": "webpack --mode=development --devtool=source-map",
     "build": "webpack --mode=production"
   },
   "dependencies": {
