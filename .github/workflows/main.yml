@@ -4,6 +4,10 @@ on:
   push:
     branches: 
     - main
+  workflow_run:
+    workflows: [Merge Dev]
+    types:
+      - completed
 
 jobs:
   build:
@@ -16,7 +20,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'
 
     - name: Install
       run: yarn install
