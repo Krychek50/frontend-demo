@@ -8,7 +8,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash:8].js',
+    filename: '[name].[chunkhash:8].js',
     //sourceMapFilename: '[name].[hash:8].map',
     //chunkFilename: '[id].[hash:8].js'
   },
@@ -36,7 +36,7 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: '[name].[hash:8].css',
+      filename: '[name].[chunkhash:8].css',
     })
   ],
   devServer: {

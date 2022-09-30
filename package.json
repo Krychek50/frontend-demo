@@ -4,7 +4,6 @@
   "repository": "git@github.com:Krychek50/frontend-demo.git",
   "author": "Tom Nuttall <tsnuttall@gmail.com>",
   "license": "MIT",
-
   "sideEffects": false,
   "scripts": {
     "dev": "webpack serve --hot --mode=development --devtool=source-map --host 0.0.0.0 --port 8080",
@@ -32,6 +31,7 @@
     "@typescript-eslint/parser": "^5.38.0",
     "eslint": "^8.18.0",
     "eslint-plugin-react": "^7.31.8",
+    "webpack-bundle-analyzer": "^4.6.1",
     "webpack-dev-server": "^4.7.2"
   }
 }
