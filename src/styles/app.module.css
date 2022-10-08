@@ -1,6 +1,9 @@
 .app {
   font-family: arial, sans-serif;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
+  background-color: black;
+  width: 800px;
+  margin-right: 0;
 }

@@ -1,8 +1,16 @@
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100px
 }
 
-.item {
+.title {
   color: black;
+  background-color: lightgray;
+  height: 50px;
+}
+
+.footer {
+  background-color: red;
+  height: 80px;
 }
