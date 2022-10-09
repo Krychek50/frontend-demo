@@ -1,8 +1,8 @@
 # frontend-demo
 Demo project for React frontend using an API. \
 \
-Uses github actions to build and deploy to an S3 Bucket. \
-[Demo Link](https://krychek-frontend-demo.s3.eu-west-2.amazonaws.com/index.html)
+Uses github actions to build and deploy to an S3 Bucket with static site hosting setup with CloudFront. \
+[Demo Link](https://d29y7ql4mosvoq.cloudfront.net/index.html)
 
 ## Setup
 `yarn`

@@ -1,79 +1,48 @@
 import { useEffect, useState } from 'react';
-import { ICardData, Card } from './card';
+import { ITableEntry, BackendAPI } from '../backendapi';
+import { Card } from './card';
 import css from '../styles/app.module.css';
 
 interface IAppState {
-  cardList: ICardData[];
+  cardList: ITableEntry[];
 }
 
 export function App() {
   const [state, setState] = useState<IAppState>({cardList: []});
-  const fetchData = async () => {
-    const response = await fetch('https://gpclnin8ok.execute-api.eu-west-2.amazonaws.com');
-    const data = await response.json();
+  const fetchItems = async () => {
+    const data = await BackendAPI.getList();
     setState({ cardList: data });
-
-    console.log("Read");
   }
   
   useEffect(() => {
-    fetchData();
+    fetchItems();
   }, []);
  
   const onAddClick = () => {
-    const addData = async () => {
-      await fetch('https://gpclnin8ok.execute-api.eu-west-2.amazonaws.com', 
-      {
-        method: 'POST',
-        headers: { 
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 'Id': 'AddTest', 'Value': '0' })
-      });
-      
-      console.log("Create");
-      fetchData();
+    const addItem = async () => {
+      const data = await BackendAPI.addItem({Id: "AddItem"});
+      setState({ cardList: data });
     }
 
-    addData();
+    addItem();
   };
 
   const onEditClick = () => {
-    const addData = async () => {
-      await fetch('https://gpclnin8ok.execute-api.eu-west-2.amazonaws.com/AddTest', 
-      {
-        method: 'PUT',
-        headers: { 
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 'Id': 'AddTest', 'Value': '2' })
-      });
-      
-      console.log("Edit");
-      fetchData();
+    const editItem = async () => {
+      const data = await BackendAPI.addItem({Id: "AddItem", Value: 'Edited'});
+      setState({ cardList: data });
     }
 
-    addData();
+    editItem();
   };
 
   const onDeleteClick = () => {
-    const addData = async () => {
-      await fetch('https://gpclnin8ok.execute-api.eu-west-2.amazonaws.com/AddTest', 
-      {
-        method: 'DELETE',
-        headers: { 
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
-      
-      console.log("Delete");
-      fetchData();
+    const deleteItem = async () => {
+      const data = await BackendAPI.deleteItem({Id: "AddItem"});
+      setState({ cardList: data });
     }
 
-    addData();
+    deleteItem();
   };
 
   return ( 
