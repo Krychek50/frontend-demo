@@ -78,11 +78,11 @@ export function App() {
 
   return ( 
     <div className={css.app}>
-      <h1>Item List</h1>
-      {state.cardList.map((card) => <Card key={card.Id} {...card}/> )}
       <button onClick={onAddClick}>Add</button>
       <button onClick={onEditClick}>Edit</button>
       <button onClick={onDeleteClick}>Delete</button>
+      <h1>Item List</h1>
+      {state.cardList.map((card) => <Card key={card.Id} {...card}/> )}
     </div>
 	);
 }
