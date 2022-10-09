@@ -18,7 +18,7 @@
   display: flex;
   justify-content: center;
   align-items: center; 
-  height: 80px;
+  height: 90px;
   background-color: darkslategrey;
 }
 
@@ -27,26 +27,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center; 
-  height: 80px;
-  padding: 5px;
+  height: 90px;
   background-color: darkslategrey;
 }
 
 .panelDiv {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center; 
-  height: 30px;
+  height: 40px;
   background-color: darkslategrey;
-}
-
-button:hover {
-	background-color: #226fbe;
 }
 
 .labelblock {
   display:flex;
   flex-direction: row;
+  padding: 2px;
 }
 
 .label {
@@ -55,4 +52,9 @@ button:hover {
 
 input {
   width: 100px;
+}
+
+button {
+  width: 60px;
+  margin: 0px 5px;
 }

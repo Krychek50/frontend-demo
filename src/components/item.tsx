@@ -67,8 +67,8 @@ export function Item(props: IItemProps) {
               </label>
             }
             <label className={css.labelblock}>
-            <div className={css.label}>Value</div>
-              <input type="text" name="Value" value={state.data.Value} onChange={handleChange} />
+              <div className={css.label}>Value</div>
+              <input  type="text" name="Value" value={state.data.Value} onChange={handleChange} />
             </label>
             <input type="submit" value="Submit" />
           </form>
