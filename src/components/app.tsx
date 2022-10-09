@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
 import { ITableEntry, BackendAPI } from '../backendapi';
 import { ItemList } from './itemlist';
+import { Item } from './item';
 import css from '../styles/app.module.css';
 
 interface IAppState {
+  msg: string;
   items: ITableEntry[];
 }
 
 export function App() {
-  const [state, setState] = useState<IAppState>({items: []});
+  const [state, setState] = useState<IAppState>({msg: "", items: []});
   
   useEffect(() => {
     const getItems = async () => {
       const data = await BackendAPI.getList();
-      setState({ items: data });
+      setState({ msg: "", items: data });
     }
 
     getItems();
@@ -22,7 +24,7 @@ export function App() {
   const onAddItem = (item: ITableEntry) => {
     const addItem = async () => {
       const data = await BackendAPI.addItem(item);
-      setState({ items: data });
+      setState({ msg: `Add ${item.Id}`, items: data });
     }
 
     addItem();
@@ -31,7 +33,7 @@ export function App() {
   const onEditItem = (item: ITableEntry) => {
     const editItem = async () => {
       const data = await BackendAPI.addItem(item);
-      setState({ items: data });
+      setState({ msg: `Edit ${item.Id}`, items: data });
     }
 
     editItem();
@@ -40,7 +42,7 @@ export function App() {
   const onDeleteItem = (item: ITableEntry) => {
     const deleteItem = async () => {
       const data = await BackendAPI.deleteItem(item);
-      setState({ items: data });
+      setState({ msg: `Delete ${item.Id}`, items: data });
     }
 
     deleteItem();
@@ -48,7 +50,11 @@ export function App() {
 
   return ( 
     <div className={css.container}>
-      <ItemList data={state.items} onAdd={onAddItem} onEdit={onEditItem} onDelete={onDeleteItem}/>
+      <h2>Add Item</h2>
+      <Item key={"reserved"} create={true} data={{Id: "", Value: "" }} onAdd={onAddItem} onEdit={() => {}} onDelete={() => {}}></Item>
+      { state.msg.length > 0 && <p>Last Action: {state.msg}</p> }
+
+      <ItemList data={state.items} onEdit={onEditItem} onDelete={onDeleteItem}/>
     </div>
 	);
 }

@@ -19,14 +19,21 @@ export function Item(props: IItemProps) {
   const [state, setState] = useState<IItemState>({edit: props.create, data: props.data});
 
   const onSubmit = (event) => {
-    if (props.create) {
-      props.onAdd(state.data);
-    } else {
-      props.onEdit(state.data);
-    }
     event.preventDefault();
+    const submit = async () => {
+      setState((prevState: IItemState) => {
+        const Value = (props.create) ? "" : prevState.data.Value;
+        return ({edit: props.create, data: { Id: props.data.Id, Value}})
+      });
 
-    setState((prevState: IItemState) => ({edit: props.create, data: prevState.data}));
+      if (props.create) {
+        await props.onAdd(state.data);
+      } else {
+        await props.onEdit(state.data);
+      }
+    }
+    
+    submit();
   };
 
   const handleChange = (event) => {

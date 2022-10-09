@@ -32,7 +32,8 @@ export class BackendAPI {
     }
 
     const response = await fetch(BackendAPI.API_URL, request);
-    return await response.json();
+    const items = await response.json();
+    return items.sort((x: ITableEntry, y: ITableEntry) => x.Id.localeCompare(y.Id));
   }
 
   // Read table item id

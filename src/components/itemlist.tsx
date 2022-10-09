@@ -4,7 +4,6 @@ import css from '../styles/itemlist.module.css';
 
 interface IItemListProps {
   data: ITableEntry[];
-  onAdd: (item: ITableEntry) => void;
   onEdit: (item: ITableEntry) => void;
   onDelete: (item: ITableEntry) => void;
 }
@@ -12,10 +11,6 @@ interface IItemListProps {
 export function ItemList(props: IItemListProps) {
 	return (
     <div>
-      <h2>Add Item</h2>
-      <div className={css.container}>
-        <Item key={"reserved"} create={true} data={{Id: "", Value: "" }} onAdd={props.onAdd} onEdit={() => {}} onDelete={() => {}}></Item>
-      </div>
       <h2>Item List</h2>
       <div className={css.container}>
           { props.data.length > 0 && 
