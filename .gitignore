@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,node,react
 
 webpack-stats.json
+.vscode
 
 ### macOS ###
 # General
