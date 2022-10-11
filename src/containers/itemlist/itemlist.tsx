@@ -1,6 +1,7 @@
-import { ITableEntry } from '../backendapi';
-import { Item } from './item';
-import css from '../styles/itemlist.module.css';
+import { ITableEntry } from '../../api/backendapi';
+import { Item } from '../../components/item/item';
+//@ts-ignore
+import css from './itemlist.module.css';
 
 interface IItemListProps {
   data: ITableEntry[];

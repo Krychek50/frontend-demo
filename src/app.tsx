@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
-import { ITableEntry, BackendAPI } from '../backendapi';
-import { ItemList } from './itemlist';
-import { Item } from './item';
-import css from '../styles/app.module.css';
-
-interface IAppState {
-  msg: string;
-  items: ITableEntry[];
-}
+import { ITableEntry, BackendAPI } from './api/backendapi';
+import { ItemList } from './containers/itemlist/itemlist';
+import { Item } from './components/item/item';
+//@ts-ignore
+import css from './app.module.css';
 
 export function App() {
-  const [state, setState] = useState<IAppState>({msg: "", items: []});
+  const [msg, setMsg] = useState<string>("");
+  const [items, setItems] = useState<ITableEntry[]>([]);
   
   useEffect(() => {
     const getItems = async () => {
       const data = await BackendAPI.getList();
-      setState({ msg: "", items: data });
+      setItems(data);
     }
 
     getItems();
@@ -24,7 +21,8 @@ export function App() {
   const onAddItem = (item: ITableEntry) => {
     const addItem = async () => {
       const data = await BackendAPI.addItem(item);
-      setState({ msg: `Add ${item.Id}`, items: data });
+      setItems(data);
+      setMsg(`Add ${item.Id}`);
     }
 
     addItem();
@@ -33,7 +31,8 @@ export function App() {
   const onEditItem = (item: ITableEntry) => {
     const editItem = async () => {
       const data = await BackendAPI.addItem(item);
-      setState({ msg: `Edit ${item.Id}`, items: data });
+      setItems(data);
+      setMsg(`Edit ${item.Id}`);
     }
 
     editItem();
@@ -42,7 +41,8 @@ export function App() {
   const onDeleteItem = (item: ITableEntry) => {
     const deleteItem = async () => {
       const data = await BackendAPI.deleteItem(item);
-      setState({ msg: `Delete ${item.Id}`, items: data });
+      setItems(data);
+      setMsg(`Delete ${item.Id}`);
     }
 
     deleteItem();
@@ -52,9 +52,9 @@ export function App() {
     <div className={css.container}>
       <h2>Add Item</h2>
       <Item key={"reserved"} create={true} data={{Id: "", Value: "" }} onAdd={onAddItem} onEdit={() => {}} onDelete={() => {}}></Item>
-      { state.msg.length > 0 && <p>Last Action: {state.msg}</p> }
+      { msg.length > 0 && <p>Last Action: {msg}</p> }
 
-      <ItemList data={state.items} onEdit={onEditItem} onDelete={onDeleteItem}/>
+      <ItemList data={items} onEdit={onEditItem} onDelete={onDeleteItem}/>
     </div>
 	);
 }
