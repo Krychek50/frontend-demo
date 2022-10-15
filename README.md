@@ -10,5 +10,5 @@ Cloudfront distribution setup to compress items and default cache behaviour. Beh
 `yarn`
 
 ## Run
-`yarn start`
+`yarn start` \
 `yarn test`
